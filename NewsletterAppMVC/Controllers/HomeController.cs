@@ -13,6 +13,20 @@ namespace NewsletterAppMVC.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult SignUp(string firstName, string lastName, string email)
+        {
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email))
+            {
+                return View("~/Views/Shared/Error.cshtml");
+            }
+            else
+            {
+
+                return View("Success");
+            }
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
