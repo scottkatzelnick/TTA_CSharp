@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Data;
+using System.Data.SqlClient;
 using System.Web.Mvc;
 
 namespace NewsletterAppMVC.Controllers
@@ -22,7 +20,28 @@ namespace NewsletterAppMVC.Controllers
             }
             else
             {
+                string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Newsletter;Integrated Security=True;
+                                            Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;
+                                            MultiSubnetFailover=False";
 
+                string queryString = @"INSERT INTO SignUps (FirstName, LastName, Email)
+                                        VALUES (@FirstName, @LastName, @Email)";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(queryString, connection);
+                    command.Parameters.Add("@FirstName", SqlDbType.VarChar);
+                    command.Parameters.Add("@LastName", SqlDbType.VarChar);
+                    command.Parameters.Add("@Email", SqlDbType.VarChar);
+
+                    command.Parameters["@FirstName"].Value = firstName;
+                    command.Parameters["@LastName"].Value = lastName;
+                    command.Parameters["@Email"].Value = email;
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
                 return View("Success");
             }
         }
