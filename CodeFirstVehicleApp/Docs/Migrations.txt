@@ -1,0 +1,17 @@
+﻿===============================================  Vehicles Context  =================================================
+
+// Creates a Configuration.cs file that will handle the dB migrations for this ASP.NET Code-first MVC Application //
+// ONLY EXECUTED ONCE //
+Enable-Migrations -ContextTypeName VehiclesContext -MigrationsDirectory Migrations\Vehicles
+
+// Creates the initial migration of all object models to dB tables using the newly created configuration.cs file //
+// EXECUTED ANYTIME THE MODEL CHANGES //
+add-migration -ConfigurationTypeName CodeFirstVehicleApp.Migrations.Vehicles.Configuration "InitialCreate"
+
+// Takes the changes and any seed data, if applicable,  from the models and applies the changes to the database itself //
+// EXECUTED ANYTIME THE DB NEEDS TO BE UPDATED //
+update-database -ConfigurationTypeName CodeFirstVehicleApp.Migrations.Vehicles.Configuration
+
+===============================================  ApplicationDbContext  =============================================
+
+// None

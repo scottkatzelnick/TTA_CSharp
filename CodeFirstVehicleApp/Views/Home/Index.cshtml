@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>CarTopia&trade;</h1>
+    <p class="lead">CarTopia&trade; is where people come to lookup vehicles from far and wide. Enter your vehicle into the database to add to the collection!</p>
+    @Html.ActionLink(HttpUtility.HtmlDecode("Learn More &raquo;"), "About", "Home", new { area = ""}, new { @class = "btn btn-primary btn-lg" })
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h2>Getting started</h2>
+    <p>
+      To use CarTopia&trade; you need to first go the Makes section and enter details for the car manufacturers. Enter all relevant information that you can gather. The better filled out the form the better the collection becomes!
+    </p>
+    @Html.ActionLink(HttpUtility.HtmlDecode("Create Car Make &raquo;"), "Create", "Makes", new { area = "" }, new { @class = "btn btn-default btn-md" })
+  </div>
+  <div class="col-md-4">
+    <h2>Adding Car Models</h2>
+    <p>Once you're finished adding in the manufacturers you can now go to the models section and add any model you like! The correct list of manufacturers should now be available in the drop-down list when creating the model.</p>
+    @Html.ActionLink(HttpUtility.HtmlDecode("Create Car Model &raquo;"), "Create", "CarModels", new { area = "" }, new { @class = "btn btn-default btn-md" })
+  </div>
+  <div class="col-md-4">
+    <h2>Browsing The Collection</h2>
+    <p>You can easily find a car from the index page just by clicking on Models and perusing the site.</p>
+    @Html.ActionLink(HttpUtility.HtmlDecode("Browse &raquo;"), "Index", "CarModels", new { area = "" }, new { @class = "btn btn-primary btn-md" })
+  </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CodeFirstVehicleApp.Models.Vehicles.Make>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+  <tr>
+    <th>
+      @Html.DisplayNameFor(model => model.Brand)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.Address)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.Circa)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.CEO)
+    </th>
+    <th></th>
+  </tr>
+
+@foreach (var item in Model) {
+<tr>
+  <td>
+    @Html.DisplayFor(modelItem => item.Brand)
+  </td>
+  <td>
+    @Html.DisplayFor(modelItem => item.Address)
+  </td>
+  <td>
+    @Html.DisplayFor(modelItem => item.Circa)
+  </td>
+  <td>
+    @Html.DisplayFor(modelItem => item.CEO)
+  </td>
+  <td>
+    @Html.ActionLink("Edit", "Edit", new { id = item.Brand }) |
+    @Html.ActionLink("Details", "Details", new { id = item.Brand }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.Brand })
+  </td>
+</tr>
+}
+
+</table>
